@@ -1,0 +1,42 @@
+{
+    "name": "Game Lift Tutorial Matchmaking Rule Example",
+    "ruleLanguageVersion": "1.0",
+    "playerAttributes": [{
+        "name": "level",
+        "type": "number",
+        "default": 10
+    }],
+    "algorithm": {
+	"balancedAttribute": "level",
+	"strategy": "balanced",
+	"batchingPreference": "largestPopulation"
+    },
+    "teams": [{
+        "name": "team",
+        "maxPlayers": 2,
+        "minPlayers": 1,
+		"quantity": 1
+    }],
+    "rules": [{
+        "name": "FairTeamLevel",
+        "description": "The average level of players in each team is within 10 points from the average level of all players in the match",
+        "type": "distance",
+        // get level values for players in each team and average separately to produce list of two numbers
+        "measurements": [ "avg(teams[*].players.attributes[level])" ],
+        // get level values for players in each team, flatten into a single list, and average to produce an overall average
+        "referenceValue": "avg(flatten(teams[*].players.attributes[level]))",
+        "maxDistance": 10 // minDistance would achieve the opposite result
+    }
+	],
+    "expansions": [
+	{
+        "target": "rules[FairTeamLevel].maxDistance",
+        "steps": [{
+            "waitTimeSeconds": 5,
+            "value": 50
+        }, {
+            "waitTimeSeconds": 15,
+            "value": 100
+        }]
+    }]
+}
