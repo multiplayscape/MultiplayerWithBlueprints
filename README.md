@@ -1,6 +1,9 @@
 # MultiplayerWithBlueprints
 The easiest way to make a multiplayer game. Save years of work by building your AAA quality multiplayer and matchmaking system with Blueprints.
 
+Purchase Plugin: https://unrealengine.com/marketplace/en-US/product/aws-cognito-dynamodb-gamelift-lambda
+Documentation: http://multiplayscape.com/documentation/ 
+
 What is multiplayer with blueprints?
 
 Multiplayer with Blueprints is an easy to use framework to build your multiplayer games in a very short amount of time.
