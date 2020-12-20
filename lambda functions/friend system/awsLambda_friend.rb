@@ -41,7 +41,7 @@ def send_friend_request(event:, context:)
     result = DynamoDB.scan({
                                table_name: FriendTableNameDecrypted,
                                index_name: FriendTableBySubIdIndexNameDecrypted,
-                               filter_expression: "#subId = :subId and #friendSubId >= :friendSubId",
+                               filter_expression: "#subId = :subId and #friendSubId = :friendSubId",
                                expression_attribute_names: {
                                    "#subId" => "subId",
                                    "#friendSubId" => "friendSubId",
@@ -156,7 +156,7 @@ def accept_friend_request(event:, context:)
     result = DynamoDB.scan({
                                 table_name: FriendTableNameDecrypted,
                                 index_name: FriendTableBySubIdIndexNameDecrypted,
-                                filter_expression: "#subId = :subId and #friendSubId >= :friendSubId",
+                                filter_expression: "#subId = :subId and #friendSubId = :friendSubId",
                                 expression_attribute_names: {
                                     "#subId" => "subId",
                                     "#friendSubId" => "friendSubId",
@@ -235,7 +235,7 @@ def rejected_friend_request(event:, context:)
     result = DynamoDB.scan({
                                 table_name: FriendTableNameDecrypted,
                                 index_name: FriendTableBySubIdIndexNameDecrypted,
-                                filter_expression: "#subId = :subId and #friendSubId >= :friendSubId",
+                                filter_expression: "#subId = :subId and #friendSubId = :friendSubId",
                                 expression_attribute_names: {
                                     "#subId" => "subId",
                                     "#friendSubId" => "friendSubId",
@@ -314,7 +314,7 @@ def delete_friend_request(event:, context:)
     result = DynamoDB.scan({
                                 table_name: FriendTableNameDecrypted,
                                 index_name: FriendTableBySubIdIndexNameDecrypted,
-                                filter_expression: "#subId = :subId and #friendSubId >= :friendSubId",
+                                filter_expression: "#subId = :subId and #friendSubId = :friendSubId",
                                 expression_attribute_names: {
                                     "#subId" => "subId",
                                     "#friendSubId" => "friendSubId",
@@ -398,7 +398,7 @@ def list_friends_byFriendSubId(event:, context:)
     result = DynamoDB.scan({
                                 table_name: FriendTableNameDecrypted,
                                 index_name: FriendTableByFriendSubIdIndexNameDecrypted,
-                                filter_expression: "#subId = :subId and #friendSubId >= :friendSubId",
+                                filter_expression: "#subId = :subId and #friendSubId = :friendSubId",
                                 expression_attribute_names: {
                                     "#subId" => "subId",
                                     "#friendSubId" => "friendSubId",
