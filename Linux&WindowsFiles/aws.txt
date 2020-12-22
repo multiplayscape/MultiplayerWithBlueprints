@@ -1,0 +1,12 @@
+WINDOWS:
+lobby-
+aws gamelift upload-build --operating-system WINDOWS_2012 --build-root "D:\MegaUploadExample\Saved\StagedBuilds\LobbyWindowsServer" --name "TeamDeathMatchLobby" --build-version "1.4" --region ap-northeast-2
+game- 
+aws gamelift upload-build --operating-system WINDOWS_2012 --build-root "D:\MegaUploadExample\Saved\StagedBuilds\GameWindowsServer" --name "TeamDeathMatchGame" --build-version "1.4" --region ap-northeast-2
+
+LINUX:
+aws gamelift upload-build --operating-system AMAZON_LINUX --build-root "D:\MegaUploadExample\Saved\StagedBuilds\LobbyLinuxServer" --name "TeamDeathmatchLobby" --build-version "build 1" --region ap-northeast-2
+
+aws gamelift upload-build --operating-system AMAZON_LINUX --build-root "D:\MegaUploadExample\Saved\StagedBuilds\GameLinuxServer" --name "TeamDeathmatchLobby" --build-version "build 1" --region ap-northeast-2
+
+[YourProjectName]\Binaries\Win64\[ProjectName]Server.exe
